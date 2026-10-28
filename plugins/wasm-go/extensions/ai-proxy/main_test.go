@@ -320,6 +320,16 @@ func TestFireworks(t *testing.T) {
 	test.RunFireworksOnHttpRequestBodyTests(t)
 }
 
+func TestRunware(t *testing.T) {
+	test.RunRunwareParseConfigTests(t)
+	test.RunRunwareOnHttpRequestHeadersTests(t)
+	test.RunRunwareOnHttpRequestBodyTests(t)
+}
+
+func TestRunwareSmoke(t *testing.T) {
+	test.RunRunwareSmokeTests(t)
+}
+
 func TestGaladriel(t *testing.T) {
 	test.RunGaladrielParseConfigTests(t)
 	test.RunGaladrielOnHttpRequestHeadersTests(t)

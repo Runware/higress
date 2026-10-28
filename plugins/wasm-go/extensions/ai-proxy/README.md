@@ -198,6 +198,10 @@ OpenRouter 所对应的 `type` 为 `openrouter`。它并无特有的配置字段
 
 Fireworks AI 所对应的 `type` 为 `fireworks`。它并无特有的配置字段。
 
+#### Runware
+
+Runware 所对应的 `type` 为 `runware`。它并无特有的配置字段。
+
 #### Galadriel
 
 Galadriel 所对应的 `type` 为 `galadriel`。它并无特有的配置字段。
@@ -1144,6 +1148,63 @@ provider:
       "message": {
         "role": "assistant",
         "content": "你好！我是一个由 Fireworks AI 提供的人工智能助手，基于 Llama 3.1 模型。我可以帮助回答问题、进行对话和提供各种信息。有什么我可以帮助你的吗？"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 15,
+    "completion_tokens": 45,
+    "total_tokens": 60
+  }
+}
+```
+
+### 使用 OpenAI 协议代理 Runware 服务
+
+**配置信息**
+
+```yaml
+provider:
+  type: runware
+  apiTokens:
+    - "YOUR_RUNWARE_API_KEY"
+  modelMapping:
+    "gpt-4": "qwen3.5-9b"
+    "gpt-3.5-turbo": "qwen3.5-4b"
+    "*": "qwen3.5-4b"
+```
+
+**请求示例**
+
+```json
+{
+  "model": "gpt-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好，你是谁？"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 100
+}
+```
+
+**响应示例**
+
+```json
+{
+  "id": "chatcmpl-runware-123456789",
+  "object": "chat.completion",
+  "created": 1699123456,
+  "model": "qwen3.5-9b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "你好！我是一个由 Runware 提供的人工智能助手。我可以帮助回答问题、进行对话和提供各种信息。有什么我可以帮助你的吗？"
       },
       "finish_reason": "stop"
     }

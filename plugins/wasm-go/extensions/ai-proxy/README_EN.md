@@ -1106,6 +1106,63 @@ provider:
 }
 ```
 
+### Using OpenAI Protocol Proxy for Runware Service
+
+**Configuration Information**
+
+```yaml
+provider:
+  type: runware
+  apiTokens:
+    - "YOUR_RUNWARE_API_KEY"
+  modelMapping:
+    "gpt-4": "qwen3.5-9b"
+    "gpt-3.5-turbo": "qwen3.5-4b"
+    "*": "qwen3.5-4b"
+```
+
+**Request Example**
+
+```json
+{
+  "model": "gpt-4",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, who are you?"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 100
+}
+```
+
+**Response Example**
+
+```json
+{
+  "id": "chatcmpl-runware-123456789",
+  "object": "chat.completion",
+  "created": 1699123456,
+  "model": "qwen3.5-9b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! I am an AI assistant powered by Runware. I can help answer questions, engage in conversations, and provide various information. How can I assist you today?"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 15,
+    "completion_tokens": 38,
+    "total_tokens": 53
+  }
+}
+```
+
 ### Using OpenAI Protocol Proxy for Galadriel Service
 
 **Configuration Information**
